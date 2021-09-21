@@ -23,7 +23,9 @@ function Header(props) {
     } else if (option === 'plus') {
       setPriceSum((priceSum) => [...priceSum, Products.price])
     } else if (option === 'minus') {
-      setPriceSum((priceSum) => [...priceSum, -Products.price])
+      Products.cartQuantity >= 1
+        ? setPriceSum((priceSum) => [...priceSum, -Products.price])
+        : props.deleteFromCart(Products)
     } else if (option === 'delete') {
       setPriceSum((priceSum) => [
         ...priceSum,
@@ -37,26 +39,31 @@ function Header(props) {
       <div className="header">
         <div className="busket-container" onClick={() => popUpCheck()}>
           <Icon />
+          {props.cartArr.length > 0 && (
+            <p className="onCartNum"> {props.cartArr.length} </p>
+          )}
         </div>
-        {/* <div onClick={console.log(BasketArr)}>Array</div> */}
+        {/* <div onClick={console.log(itemSum)}>Array</div> */}
         {basketInput && (
           <div className="basket-items">
             {props.cartArr.length > 0 ? (
               <>
-                <ProductList
-                  products={props.cartArr}
-                  checkLoc="cart"
-                  itemAdd={props.itemAdd}
-                  quantInc={props.quantInc}
-                  quantDec={props.quantDec}
-                  setProducts={props.setCartArr}
-                  setPriceSum={setPriceSum}
-                  priceSum={priceSum}
-                  itemSum={itemSum}
-                  setItemSum={setItemSum}
-                  priceSumCounter={priceSumCounter}
-                  deleteFromCart={props.deleteFromCart}
-                />
+                <div className="basketInnerITemsDIv">
+                  <ProductList
+                    products={props.cartArr}
+                    checkLoc="cart"
+                    itemAdd={props.itemAdd}
+                    quantInc={props.quantInc}
+                    quantDec={props.quantDec}
+                    setProducts={props.setCartArr}
+                    setPriceSum={setPriceSum}
+                    priceSum={priceSum}
+                    itemSum={itemSum}
+                    setItemSum={setItemSum}
+                    priceSumCounter={priceSumCounter}
+                    deleteFromCart={props.deleteFromCart}
+                  />
+                </div>
                 <p className="busket-container__sum">
                   ნივთები სულ: {itemSum.reduce((a, b) => a + b, 0)}
                 </p>

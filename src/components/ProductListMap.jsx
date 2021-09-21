@@ -61,19 +61,19 @@ function ProductListMap(props) {
         </div>
       ) : (
         <>
-          <div
-            className="deleteButton"
-            onClick={() => (
-              <>
-                {' '}
-                {props.deleteFromCart(props.Products)}{' '}
-                {props.priceSumCounter(props.Products, 'delete')}{' '}
-              </>
-            )}
-          >
-            <CloseButton />
-          </div>
           <div className="basket-item-box">
+            <div
+              className="deleteButton"
+              onClick={() => (
+                <>
+                  {' '}
+                  {props.deleteFromCart(props.Products)}{' '}
+                  {props.priceSumCounter(props.Products, 'delete')}{' '}
+                </>
+              )}
+            >
+              <CloseButton />
+            </div>
             <div className="basket-photo">
               <img src={props.Products.photo} />
             </div>
@@ -109,7 +109,13 @@ function ProductListMap(props) {
                       props.setProducts,
                       props.checkLoc,
                     )}
-                    {props.priceSumCounter(props.Products, 'minus')}
+                    {props.Products.cartQuantity ===
+                    (
+                      <>
+                        {props.deleteFromCart(props.Products)}
+                        {props.priceSumCounter(props.Products, 'delete')}
+                      </>
+                    )}
                   </>
                 )}
               >

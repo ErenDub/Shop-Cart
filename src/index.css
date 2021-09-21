@@ -26,6 +26,11 @@ code {
 }
 .busket-container {
   display: flex;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.busket-container:hover {
+  transform: scale(1.25);
 }
 .prod-img img {
   width: 150px;
@@ -123,6 +128,7 @@ code {
   width: 96%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.322);
   padding: 10px 0;
+  position: relative;
 }
 .basket-item-box:last-child {
   border-bottom: 3px solid rgba(0, 0, 0, 0.6);
@@ -192,7 +198,9 @@ code {
 }
 .deleteButton {
   position: absolute;
-  margin-top: 10px;
+  margin-top: 0px;
+  margin-right: -3px;
+  right: 0;
   fill: rgb(252, 58, 58);
   opacity: 0.5;
   transition: opacity 0.2s;
@@ -200,4 +208,25 @@ code {
 }
 .deleteButton:hover {
   opacity: 1;
+}
+.onCartNum {
+  position: absolute;
+  margin-top: -5px;
+  margin-left: 15px;
+  background-color: rgb(24, 124, 255);
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 11px;
+  color: white;
+}
+.basketInnerITemsDIv {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+.basketInnerITemsDIv::-webkit-scrollbar {
+  width: 5px;
+}
+.basketInnerITemsDIv::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
 }

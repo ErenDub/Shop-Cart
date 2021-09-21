@@ -10,7 +10,7 @@ function CloseButton() {
       y="0px"
       viewBox="0 0 511.995 511.995"
       style={{ enableBackground: 'new 0 0 511.995 511.995' }}
-      width={50}
+      width={15}
     >
       <g>
         <g>

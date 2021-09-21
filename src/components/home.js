@@ -36,6 +36,38 @@ function Home() {
       quantity: 1,
       cartQuantity: 0,
     },
+    {
+      id: 5,
+      title: 'prod 5',
+      photo: '/prod1.png',
+      price: 5,
+      quantity: 1,
+      cartQuantity: 0,
+    },
+    {
+      id: 6,
+      title: 'prod 6',
+      photo: '/prod2.png',
+      price: 10,
+      quantity: 1,
+      cartQuantity: 0,
+    },
+    {
+      id: 7,
+      title: 'prod 7',
+      photo: '/prod3.png',
+      price: 15,
+      quantity: 1,
+      cartQuantity: 0,
+    },
+    {
+      id: 8,
+      title: 'prod 8',
+      photo: '/prod4.png',
+      price: 30,
+      quantity: 1,
+      cartQuantity: 0,
+    },
   ])
 
   const [cartArr, setCartArr] = useState([])
@@ -100,17 +132,15 @@ function Home() {
         setProd([...newArr])
       }
     } else if (checkLoc === 'cart') {
-      if (prod.cartQuantity > 1) {
-        const newArr = cartArr.map((el) => {
-          if (el.id === prod.id) {
-            el.cartQuantity--
-            return el
-          } else {
-            return el
-          }
-        })
-        setProd([...newArr])
-      }
+      const newArr = cartArr.map((el) => {
+        if (el.id === prod.id) {
+          el.cartQuantity--
+          return el
+        } else {
+          return el
+        }
+      })
+      setProd([...newArr])
     }
   }
   const deleteFromCart = (prod) => {
@@ -135,7 +165,7 @@ function Home() {
         setProducts={setProducts}
         checkLoc="main"
       />
-      <button onClick={() => console.log(products)}>Array</button>
+      {/* <button onClick={() => console.log(products)}>Array</button> */}
     </div>
   )
 }
