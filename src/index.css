@@ -1,0 +1,203 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.busket-icon {
+  width: 25px;
+  height: auto;
+}
+.header {
+  background-color: rgb(240, 240, 240);
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+.busket-container {
+  display: flex;
+}
+.prod-img img {
+  width: 150px;
+  box-shadow: 5px 5px 5px rgba(143, 143, 143, 0.5);
+  border-radius: 10px;
+}
+.prod-text {
+  font-weight: 600;
+  text-transform: uppercase;
+  height: 30px;
+  margin-top: 5px;
+}
+.items-box {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+.items-box2 {
+  display: bloack;
+  margin-top: 10px;
+}
+.prod-title {
+  float: left;
+}
+.prod-price {
+  float: right;
+}
+.busket-container__sum {
+  background-color: rgb(24, 124, 255);
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 88%;
+  color: white;
+  text-align: center;
+}
+.prod-add {
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+  padding: 2px 0;
+  transition: background-color 0.2s;
+}
+.prod-add:hover {
+  background-color: rgb(226, 226, 226);
+  cursor: pointer;
+}
+.basket-items::after {
+  content: '';
+  width: 25px;
+  height: 25px;
+  background-color: rgb(219, 219, 219);
+  top: 0;
+  margin-top: -8px;
+  margin-left: 137px;
+  position: absolute;
+  transform: rotate(45deg);
+  z-index: 5;
+}
+
+.basket-items {
+  position: absolute;
+  background-color: rgb(219, 219, 219);
+  border-radius: 5px;
+  padding: 20px 0;
+  top: 50px;
+  width: 300px;
+  height: auto;
+  max-height: 500px;
+  display: grid;
+  grid-template-columns: 90%;
+  justify-content: center;
+  z-index: 5;
+}
+.basketInnerITemsDIv {
+  max-height: 450px;
+  overflow-y: scroll;
+}
+.basketInnerITemsDIv::-webkit-scrollbar {
+  width: 5px;
+}
+.basketInnerITemsDIv::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+.black-background {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+}
+.basket-item-box {
+  display: grid;
+  grid-template-columns: 25% 40% 35%;
+  width: 96%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.322);
+  padding: 10px 0;
+}
+.basket-item-box:last-child {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.6);
+}
+.basket-photo img {
+  width: 50px;
+  border-radius: 50px;
+}
+.basket-title {
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.basket-price {
+  font-size: 14px;
+}
+.basket-quantity {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.numberOfItems {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 5px 0;
+}
+.from-item-plus {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.08);
+  padding: 0 0 5px 0;
+  border-radius: 80px;
+  transition: background-color 0.2s;
+}
+.from-item-plus:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+.numberOf {
+  text-align: center;
+}
+.busket-quan-box {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  margin-top: 10px;
+}
+.basket-plus {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.08);
+  padding: 0 0 5px 0;
+  border-radius: 80px;
+  transition: background-color 0.2s;
+  height: 23px;
+}
+.basket-plus:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+.basket-sum {
+  background-color: rgb(24, 124, 255);
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 88%;
+  color: white;
+  text-align: center;
+  margin-top: 0;
+}
+.deleteButton {
+  position: absolute;
+  margin-top: 10px;
+  fill: rgb(252, 58, 58);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+.deleteButton:hover {
+  opacity: 1;
+}
