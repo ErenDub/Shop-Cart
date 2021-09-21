@@ -2,77 +2,15 @@ import React, { useState } from 'react'
 import ProductList from './productList'
 import { Products } from '../data/products'
 import Header from './header'
-function Home() {
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      title: 'prod 1',
-      photo: '/prod1.png',
-      price: 5,
-      quantity: 1,
-      cartQuantity: 0,
-    },
-    {
-      id: 2,
-      title: 'prod 2',
-      photo: '/prod2.png',
-      price: 10,
-      quantity: 1,
-      cartQuantity: 0,
-    },
-    {
-      id: 3,
-      title: 'prod 3',
-      photo: '/prod3.png',
-      price: 15,
-      quantity: 1,
-      cartQuantity: 0,
-    },
-    {
-      id: 4,
-      title: 'prod 4',
-      photo: '/prod4.png',
-      price: 30,
-      quantity: 1,
-      cartQuantity: 0,
-    },
-    {
-      id: 5,
-      title: 'prod 5',
-      photo: '/prod1.png',
-      price: 5,
-      quantity: 1,
-      cartQuantity: 0,
-    },
-    {
-      id: 6,
-      title: 'prod 6',
-      photo: '/prod2.png',
-      price: 10,
-      quantity: 1,
-      cartQuantity: 0,
-    },
-    {
-      id: 7,
-      title: 'prod 7',
-      photo: '/prod3.png',
-      price: 15,
-      quantity: 1,
-      cartQuantity: 0,
-    },
-    {
-      id: 8,
-      title: 'prod 8',
-      photo: '/prod4.png',
-      price: 30,
-      quantity: 1,
-      cartQuantity: 0,
-    },
-  ])
+function Home(props) {
+  const [products, setProducts] = useState([...props.prod])
 
   const [cartArr, setCartArr] = useState([])
-
-  const itemAdd = (product, quan) => {
+  const itemAddDefault = (product) => {
+    product.cartQuantity = product.quantity
+    setCartArr((cartArr) => [...cartArr, product])
+  }
+  const itemAdd = (product) => {
     let isExsist = false
     if (cartArr.length > 0) {
       cartArr.forEach((el) => {
@@ -83,64 +21,44 @@ function Home() {
       })
     } else {
       isExsist = true
-      product.cartQuantity = product.quantity
-      setCartArr((cartArr) => [...cartArr, product])
+      itemAddDefault(product)
     }
     if (!isExsist) {
-      product.cartQuantity = product.quantity
-      setCartArr((cartArr) => [...cartArr, product])
+      itemAddDefault(product)
     }
-    // tmp && setCartArr((cartArr) => [...cartArr, product])
-    // setTimeout(() => {
-    //   product.quantity = 1
-    // }, 1000)
   }
+
+  const quantIncDefault = (array, setProd, prod, toChange, type) => {
+    const newArr = array.map((el) => {
+      if (el.id === prod.id) {
+        if (toChange === 'main') {
+          type === 'inc' ? el.quantity++ : el.quantity--
+        } else if ('cart') {
+          type === 'inc' ? el.cartQuantity++ : el.cartQuantity--
+        }
+
+        return el
+      } else {
+        return el
+      }
+    })
+    setProd([...newArr])
+  }
+
   const quantInc = (prod, setProd, checkLoc) => {
     if (checkLoc === 'main') {
-      const newArr = products.map((el) => {
-        if (el.id === prod.id) {
-          el.quantity++
-          return el
-        } else {
-          return el
-        }
-      })
-      setProd([...newArr])
+      quantIncDefault(products, setProd, prod, checkLoc, 'inc')
     } else if (checkLoc === 'cart') {
-      const newArr = cartArr.map((el) => {
-        if (el.id === prod.id) {
-          el.cartQuantity++
-          return el
-        } else {
-          return el
-        }
-      })
-      setProd([...newArr])
+      quantIncDefault(cartArr, setProd, prod, checkLoc, 'inc')
     }
   }
+
   const quantDec = (prod, setProd, checkLoc) => {
     if (checkLoc === 'main') {
-      if (prod.quantity > 1) {
-        const newArr = products.map((el) => {
-          if (el.id === prod.id) {
-            el.quantity--
-            return el
-          } else {
-            return el
-          }
-        })
-        setProd([...newArr])
-      }
+      prod.quantity > 1 &&
+        quantIncDefault(products, setProd, prod, checkLoc, 'dec')
     } else if (checkLoc === 'cart') {
-      const newArr = cartArr.map((el) => {
-        if (el.id === prod.id) {
-          el.cartQuantity--
-          return el
-        } else {
-          return el
-        }
-      })
-      setProd([...newArr])
+      quantIncDefault(cartArr, setProd, prod, checkLoc, 'dec')
     }
   }
   const deleteFromCart = (prod) => {
